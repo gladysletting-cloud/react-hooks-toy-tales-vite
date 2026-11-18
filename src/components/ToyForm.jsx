@@ -3,7 +3,7 @@ import React, {useState} from "react";
 function ToyForm({onAddToy}) {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
-
+// POST a new toy with 0 likes, then pass it up to App
   function handleSubmit(e) {
     e.preventDefault();
     const newToy = {
