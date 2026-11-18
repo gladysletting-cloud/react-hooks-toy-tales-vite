@@ -20,6 +20,13 @@ function App() {
   function handleAddToy(newToy) {
     setToys([...toys, newToy]);
   }
+  function handleDeleteToy(id) {
+    fetch(`http://localhost:3001/toys/${id}`, {
+      method: "DELETE",
+    }).then(() => {
+      setToys(toys.filter((toy) => toy.id !== id));
+    });
+  }
 
   return (
     <>
@@ -28,7 +35,7 @@ function App() {
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
-      <ToyContainer toys={toys} />
+      <ToyContainer toys={toys} onDeleteToy={handleDeleteToy} />
     </>
   );
 }
